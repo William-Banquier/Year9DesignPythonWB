@@ -1,0 +1,7 @@
+print("I like video games")
+print("I like coding")
+print("I have a dog")
+print("I was born a young age")
+print("I like reading")
+print("I had two guinnie pigs (They died)")
+print("I like some music")
