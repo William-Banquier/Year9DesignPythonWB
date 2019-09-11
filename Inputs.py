@@ -1,0 +1,1 @@
+print(input("This is a input: "))
