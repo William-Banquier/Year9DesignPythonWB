@@ -1,24 +1,20 @@
-#imports
+def calcVolumeCylinder(radius, height):
+	#imports
 
-import math as m
-
-
-print("Volume Of A Cylinder Formula")
-#Input
-
-radius = int(input("Input The Radius: "))
-#Radius
-height = int(input("Input The Height: "))
-#Height
-
-#Volume Calculation
-
-volume = (height*(radius**2))*m.pi
+	import math as m
 
 
-#Output
+	print("Volume Of A Cylinder Formula")
 
-#Final Print 
+	#Volume Calculation
 
-print("The Volume Is",volume)
+	volume = round((height*(radius**2))*m.pi, 2)
 
+
+	#Output
+
+	#Final Print 
+
+	print("The Volume Is",volume)
+
+calcVolumeCylinder(1,1)
