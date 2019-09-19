@@ -7,4 +7,4 @@ def findAminoAcid(s):
 			print (AA_CODE_VALUE[x])
 		x+=1
 
-findAminoAcid("TGA")
+findAminoAcid(input())
