@@ -1,0 +1,10 @@
+national:nat
+government:gov
+institution:inst
+international:internat
+official:off
+corporation:corp
+corporate:corp
+federal:fed
+department:depart
+canada:CAN
