@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import filedialog
-
+import os
 inputText = ""
 inputSize = 0
 
@@ -12,11 +12,11 @@ inputSize = 0
 
 def callback(string):
     #Input Stuff
-    
-    inputText = (e.get())
-    inputSize = (len(e.get().split()))
 
-    #print(inputText)
+    inputSize = (len(e.get().split()))
+    
+    print(inputSize)
+
     inputTextSize.config(state = "normal")
     inputTextSize.delete(0, END)
     inputTextSize.insert(0, "Word Count:"+str(inputSize))
@@ -25,10 +25,15 @@ def callback(string):
     #Output Stuff
     #textSummarizer(inputText) this line is an example for  what will happen when the two scripts are combined
 
+    outputEntry.config(state = "normal")
+    outputEntry.delete(0, END)
+    outputEntry.insert(0, string)
+    #outputEntry.config(state = "disabled")
+    print(len(string.split()))
 
     outputTextSize.config(state = "normal")
     outputTextSize.delete(0, END)
-    outputTextSize.insert(0, "Word Count:"+str(inputSize))
+    outputTextSize.insert(0, "Word Count:"+str(len(string.split())))
     outputTextSize.config(state = "disabled")
 
 
@@ -93,7 +98,7 @@ def hisSum():
 
 
     finalSentanceCount = len(final.split("."))
-    print(finalSentanceCount)
+    #print(finalSentanceCount)
     finalSentance = (final.split("."))
 
     for i in range(finalSentanceCount):
@@ -101,11 +106,11 @@ def hisSum():
         quickEnd = False
         for y in range(len(ndictionary.split())):
             if  ndictionary.split()[y] in finalSentance[i] and quickEnd == False:
-                trueFinal += finalSentance[i]
+                trueFinal += finalSentance[i]+". "
                 quickEnd == True
                 break
 
-
+    os.system("clear")
     print(trueFinal)
     callback(trueFinal)
 
@@ -138,7 +143,8 @@ def hisSum():
 
 
 
-
+def quickCopy():
+    master.clipboard_append(outputEntry.get())
 
 
 
@@ -161,6 +167,7 @@ def chooseFile():
         e.insert(0,data)
         hisSum()
         print("File Upload End")
+
 
 
 #Title
@@ -187,12 +194,16 @@ outputEntry.grid(row = 2, column = 2)
 outputEntry.insert(0, "Output Text")
 outputEntry.config(state = DISABLED)
 
-outputTextSize = Entry(master, text="N/A", width=30, state = DISABLED)
+outputTextSize = Entry(master, text="", width=30, state = DISABLED)
 outputTextSize.grid(row = 2, column = 0)
 
 
 
 readFile = Button(master, text="Upload .Txt File", command=chooseFile)
-readFile.grid(row=5)
+readFile.grid(row=5,column = 0)
+
+copyFile = Button(master, text="Copy To Clipboard", command=quickCopy)
+copyFile.grid(row=5,column = 2)
+
 
 mainloop()
