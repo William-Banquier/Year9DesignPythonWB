@@ -1,9 +1,9 @@
 from tkinter import *
 from tkinter import filedialog
 import os
+from tkinter import messagebox
 inputText = ""
 inputSize = 0
-
 
 
 
@@ -42,8 +42,6 @@ def callback(string):
 ##############################################################################
 
 
-
-#WORKING YAAAAAAAAYYYYYY
 
 
 
@@ -86,7 +84,7 @@ def hisSum():
     ndictionary = ""
     for i in range(0,len(dictionary.split())):
         #print(len(dictionary.split()[i]))
-        if (len(dictionary.split()[i])) > 10:
+        if (len(dictionary.split()[i])) > 4:
             #print(i)
             ndictionary+=dictionary.split()[i]+" "
     #print(dictionary.split())
@@ -102,6 +100,13 @@ def hisSum():
     finalSentance = (final.split("."))
 
     for i in range(finalSentanceCount):
+        try:
+            if int(customWordCount.get())!=0:
+                if len(trueFinal.split())>int(customWordCount.get()):
+                    break
+        except:
+            pass
+        
         #print(finalSentance[i])#,y)
         quickEnd = False
         for y in range(len(ndictionary.split())):
@@ -180,6 +185,8 @@ b.grid(row = 0, column = 0)
 title = Label(master, text="Text Summarizer", width=30)
 title.grid(row = 0, column = 2)
 
+
+
 #Input Text
 e = Entry(master, text = "Put Text Here")
 e.grid(row = 1, column = 2)
@@ -200,10 +207,16 @@ outputTextSize.grid(row = 2, column = 0)
 
 
 readFile = Button(master, text="Upload .Txt File", command=chooseFile)
-readFile.grid(row=5,column = 0)
+readFile.grid(row=6,column = 0)
 
 copyFile = Button(master, text="Copy To Clipboard", command=quickCopy)
 copyFile.grid(row=5,column = 2)
 
+customWordCount = Entry(master, text = "Wordcount (leave 0 for max)")
+customWordCount.grid(row = 5, column = 0)
+customWordCount.insert(0, "Wordcount (leave 0 for max)")
 
-mainloop()
+
+
+
+master.mainloop()
