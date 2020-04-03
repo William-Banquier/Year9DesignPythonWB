@@ -16,7 +16,7 @@ def callback(string):
     inputSize = (len(e.get().split()))
     
     print(inputSize)
-
+    
     inputTextSize.config(state = "normal")
     inputTextSize.delete(0, END)
     inputTextSize.insert(0, "Word Count:"+str(inputSize))
@@ -177,6 +177,7 @@ def chooseFile():
 
 #Title
 master.title("Text Summerizer V 1.0")
+
 #Button
 b = Button(master, text="Submit", width=10, command=hisSum)
 b.grid(row = 0, column = 0)
